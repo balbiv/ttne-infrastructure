@@ -1,0 +1,39 @@
+version: '3.1'
+services:
+  mqtt:
+    image: registry.ttne.local:5000/mqtt
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    restart: always
+    ports:
+      - 1883:1883
+      - 9001:9001
+  ingest:
+    image: registry.ttne.local:5000/ingest
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    restart: always
+    ports:
+      - 3001:3001
+  devices:
+    image: registry.ttne.local:5000/devices
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    restart: always
+    ports:
+      - 3002:3002
+  frontend:
+    image: registry.ttne.local:5000/frontend
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    restart: always
+    ports:
+      - 8080:8080
