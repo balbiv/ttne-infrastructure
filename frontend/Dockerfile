@@ -18,9 +18,11 @@ COPY . /app
 
 # Install any needed packages specified in requirements.txt
 RUN npm install
+RUN npm run build
+RUN cp -a /app/dist/. /var/www/html
 
 # Make port 8080 available outside this container
 EXPOSE 8080
 
-# Run `npm run serve` when the container launches
-CMD ["npm", "run", "serve"]
+# Start Apache2
+CMD service apache2 start
