@@ -26,4 +26,4 @@ RUN cp -a /app/dist/. /var/www/html
 EXPOSE 8080
 
 # Start Apache2
-CMD service apache2 start
+CMD apache2ctl -D FOREGROUND
