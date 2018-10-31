@@ -9,6 +9,7 @@ RUN apt-get install -y apt-transport-https
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update -qq
 RUN apt-get install -y nodejs
+RUN apt-get install -y apache2
 
 # Set the working directory to /app
 WORKDIR /app
